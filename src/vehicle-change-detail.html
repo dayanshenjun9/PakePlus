@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 交通工具变更详情</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/form-enhancements.css">
+    <link rel="stylesheet" href="css/wechat-ui.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 交通工具变更详情页面 -->
+    <div id="vehicleChangeDetailPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='vehicle-change.html'">←</button>
+                <span class="page-title">交通工具变更详情</span>
+            </div>
+            <div class="header-right">
+                <button class="action-btn" onclick="printVehicleChange()">
+                    <i class="icon-print"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <div class="detail-container">
+                <!-- 状态指示器 -->
+                <div class="status-indicator">
+                    <div class="status-icon" id="statusIcon"></div>
+                    <span class="status-text" id="statusText">加载中...</span>
+                </div>
+                
+                <!-- 基础信息 -->
+                <div class="detail-section">
+                    <h3 class="section-title">基础信息</h3>
+                    <div class="detail-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">变更单号：</span>
+                            <span class="detail-value" id="vehicleChangeNo">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">申请人：</span>
+                            <span class="detail-value" id="creatorName">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">创建时间：</span>
+                            <span class="detail-value" id="createTime">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">职位：</span>
+                            <span class="detail-value" id="roleID">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 变更信息 -->
+                <div class="detail-section">
+                    <h3 class="section-title">变更信息</h3>
+                    <div class="detail-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">计划出行时间：</span>
+                            <span class="detail-value" id="planDate">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">原计划出行方式：</span>
+                            <span class="detail-value" id="planTripMode">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">原定交通工具标准：</span>
+                            <span class="detail-value" id="planVehicle">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">原定交通工具费用：</span>
+                            <span class="detail-value" id="planVehiclePrice">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">申请变更标准：</span>
+                            <span class="detail-value" id="changePlanVehicle">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">变更后预计费用：</span>
+                            <span class="detail-value" id="changeCost">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">变更原因：</span>
+                            <span class="detail-value" id="changeCause">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 审批信息 -->
+                <div class="detail-section">
+                    <h3 class="section-title">审批信息</h3>
+                    <div class="detail-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">部门负责人意见：</span>
+                            <span class="detail-value" id="dutyPersonOpinion">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">副总经理意见：</span>
+                            <span class="detail-value" id="vicePresidentOpinion">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">总经理意见：</span>
+                            <span class="detail-value" id="generalOpinion">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">审批状态：</span>
+                            <span class="detail-value" id="auditStatus">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 其他信息 -->
+                <div class="detail-section">
+                    <h3 class="section-title">其他信息</h3>
+                    <div class="detail-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">备注：</span>
+                            <span class="detail-value" id="remark">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/vehicle-change-detail.js"></script>
+</body>
+</html> 
