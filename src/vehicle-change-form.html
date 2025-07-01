@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 交通工具变更申请表</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/form-enhancements.css">
+    <link rel="stylesheet" href="css/wechat-ui.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 交通工具变更申请表单页面 -->
+    <div id="vehicleChangeFormPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='vehicle-change.html'">←</button>
+                <span class="page-title">交通工具变更申请表单</span>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <form id="vehicleChangeForm" class="form-container">
+                <!-- 单据ID (隐藏) -->
+                <div class="form-group" style="display: none;">
+                    <label class="form-label">单据ID (TravelChangeVehicleID)：</label>
+                    <input type="text" class="form-input" id="travelChangeVehicleID" placeholder="系统自动生成" readonly>
+                </div>
+
+                <!-- 关联出差ID -->
+                <div class="form-group">
+                    <label class="form-label">关联出差ID (TravelID)：</label>
+                    <select class="form-select" id="travelID">
+                        <option value="">请选择关联出差申请</option>
+                    </select>
+                    <span class="select-arrow">▼</span>
+                </div>
+
+                <!-- 申请人 -->
+                <div class="form-group" style="display: none;">
+                    <label class="form-label required">申请人 (Creator)：</label>
+                    <input type="text" class="form-input" id="creator" readonly>
+                </div>
+
+                <!-- 职位 -->
+                <div class="form-group">
+                    <label class="form-label required">职位 (Role_ID)：</label>
+                    <input type="text" class="form-input" id="role_ID" placeholder="请输入职位" required>
+                </div>
+
+                <!-- 计划出行时间 -->
+                <div class="wx-form-group">
+                    <label class="form-label wx-form-label required">计划出行时间 (PlanDate)：</label>
+                    <div class="wx-date-picker">
+                        <input type="date" class="form-input wx-date-picker-input" id="planDate" required>
+                    </div>
+                </div>
+
+                <!-- 原计划出行方式 -->
+                <div class="form-group">
+                    <label class="form-label required">原计划出行方式 (PlanTripMode)：</label>
+                    <select class="form-select" id="planTripMode">
+                        <option value="">请选择</option>
+                        <option value="飞机">飞机</option>
+                        <option value="高铁">高铁</option>
+                        <option value="动车">动车</option>
+                        <option value="火车">火车</option>
+                        <option value="汽车">汽车</option>
+                        <option value="其他">其他</option>
+                    </select>
+                    <span class="select-arrow">▼</span>
+                </div>
+
+                <!-- 原定交通工具标准 -->
+                <div class="form-group">
+                    <label class="form-label required">原定交通工具标准 (PlanVehicle)：</label>
+                    <input type="text" class="form-input" id="planVehicle" placeholder="请输入原定交通工具标准" required>
+                </div>
+
+                <!-- 原定交通工具费用标准 -->
+                <div class="form-group">
+                    <label class="form-label required">原定交通工具费用标准 (PlanVehiclePrice)：</label>
+                    <input type="number" class="form-input" id="planVehiclePrice" placeholder="请输入原定交通工具费用标准" required>
+                </div>
+
+                <!-- 申请变更标准 -->
+                <div class="form-group">
+                    <label class="form-label required">申请变更标准 (ChangePlanVehicle)：</label>
+                    <input type="text" class="form-input" id="changePlanVehicle" placeholder="请输入申请变更标准" required>
+                </div>
+
+                <!-- 变更后预计费用 -->
+                <div class="form-group">
+                    <label class="form-label required">变更后预计费用 (ChangeCost)：</label>
+                    <input type="number" class="form-input" id="changeCost" placeholder="请输入变更后预计费用" required>
+                </div>
+
+                <!-- 变更原因 -->
+                <div class="form-group">
+                    <label class="form-label required">变更原因 (ChangeCause)：</label>
+                    <textarea class="form-textarea" id="changeCause" placeholder="请输入变更原因" rows="4" required></textarea>
+                </div>
+
+                <!-- 部门负责人意见 (隐藏字段) -->
+                <div class="form-group" style="display: none;">
+                    <label class="form-label">部门负责人意见 (DutyPersonOpinion)：</label>
+                    <textarea class="form-textarea" id="dutyPersonOpinion" placeholder="部门负责人意见" rows="2" readonly></textarea>
+                </div>
+
+                <!-- 副总经理意见 (隐藏字段) -->
+                <div class="form-group" style="display: none;">
+                    <label class="form-label">副总经理意见 (VicePresidentOpinion)：</label>
+                    <textarea class="form-textarea" id="vicePresidentOpinion" placeholder="副总经理意见" rows="2" readonly></textarea>
+                </div>
+
+                <!-- 总经理意见 (隐藏字段) -->
+                <div class="form-group" style="display: none;">
+                    <label class="form-label">总经理意见 (GeneralOpinion)：</label>
+                    <textarea class="form-textarea" id="generalOpinion" placeholder="总经理意见" rows="2" readonly></textarea>
+                </div>
+
+                <!-- 备注 -->
+                <div class="form-group">
+                    <label class="form-label">备注 (Remark)：</label>
+                    <textarea class="form-textarea" id="remark" placeholder="请输入备注信息" rows="2"></textarea>
+                </div>
+
+                <!-- 审核状态 -->
+                <div class="form-group">
+                    <label class="form-label">审核状态 (AuditStauts)：</label>
+                    <input type="text" class="form-input" id="statusName" readonly>
+                </div>
+
+                <!-- 创建时间 -->
+                <div class="form-group">
+                    <label class="form-label">创建时间 (CreateTime)：</label>
+                    <input type="text" class="form-input" id="createTime" readonly>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='vehicle-change.html'">取消</button>
+                    <button type="button" class="btn btn-outline" onclick="saveDraft()">保存草稿</button>
+                    <button type="button" class="btn btn-primary" onclick="submitApplication()">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/vehicle-change-form.js"></script>
+</body>
+</html> 
