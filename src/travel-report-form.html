@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 出差报告表</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/form-enhancements.css">
+    <link rel="stylesheet" href="css/wechat-ui.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 出差报告单表单页面 -->
+    <div id="travelReportFormPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="history.back()">←</button>
+                <span class="page-title">出差报告单表单</span>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <form id="travelReportForm" class="form-container">
+                <!-- 基本信息 -->
+                <div class="form-section">
+                    <h3 class="section-title">基本信息</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">单据ID：</label>
+                        <input type="text" class="form-input" id="travelReportID" name="travelReportID" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">报告编号：</label>
+                        <input type="text" class="form-input" id="reportNo" name="reportNo" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">关联出差单(*)：</label>
+                        <select class="form-select" id="travelApplicationID" name="travelApplicationID" required>
+                            <option value="">请选择关联出差单</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">报告人(*)：</label>
+                        <input type="text" class="form-input" id="reporter" name="reporter" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">报告日期(*)：</label>
+                        <input type="date" class="form-input" id="reportDate" name="reportDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">部门：</label>
+                        <input type="text" class="form-input" id="department" name="department" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">职位：</label>
+                        <input type="text" class="form-input" id="position" name="position" readonly>
+                    </div>
+                </div>
+                
+                <!-- 出差信息 -->
+                <div class="form-section">
+                    <h3 class="section-title">出差信息</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">开始日期(*)：</label>
+                        <input type="date" class="form-input" id="startDate" name="startDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">结束日期(*)：</label>
+                        <input type="date" class="form-input" id="endDate" name="endDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">目的地(*)：</label>
+                        <input type="text" class="form-input" id="destination" name="destination" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">出差目的(*)：</label>
+                        <textarea class="form-textarea" id="purpose" name="purpose" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">交通工具：</label>
+                        <input type="text" class="form-input" id="vehicle" name="vehicle">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">住宿地点：</label>
+                        <input type="text" class="form-input" id="accommodation" name="accommodation">
+                    </div>
+                </div>
+                
+                <!-- 报告内容 -->
+                <div class="form-section">
+                    <h3 class="section-title">报告内容</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">工作总结(*)：</label>
+                        <textarea class="form-textarea" id="workSummary" name="workSummary" rows="5" required placeholder="请详细描述出差期间的工作内容和完成情况"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">工作成果：</label>
+                        <textarea class="form-textarea" id="achievement" name="achievement" rows="3" placeholder="请描述出差取得的主要成果和收获"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">遇到的问题：</label>
+                        <textarea class="form-textarea" id="problems" name="problems" rows="3" placeholder="请描述出差过程中遇到的问题和困难"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">建议和改进：</label>
+                        <textarea class="form-textarea" id="suggestions" name="suggestions" rows="3" placeholder="请提出相关建议和改进意见"></textarea>
+                    </div>
+                </div>
+                
+                <!-- 费用信息 -->
+                <div class="form-section">
+                    <h3 class="section-title">费用信息</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">交通费用：</label>
+                        <input type="number" class="form-input" id="transportCost" name="transportCost" step="0.01" min="0" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">住宿费用：</label>
+                        <input type="number" class="form-input" id="accommodationCost" name="accommodationCost" step="0.01" min="0" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">餐饮费用：</label>
+                        <input type="number" class="form-input" id="mealCost" name="mealCost" step="0.01" min="0" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">其他费用：</label>
+                        <input type="number" class="form-input" id="otherCost" name="otherCost" step="0.01" min="0" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">费用总计：</label>
+                        <input type="number" class="form-input" id="totalCost" name="totalCost" step="0.01" min="0" readonly>
+                    </div>
+                </div>
+                
+                <!-- 其他信息 -->
+                <div class="form-section">
+                    <h3 class="section-title">其他信息</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">备注：</label>
+                        <textarea class="form-textarea" id="remark" name="remark" rows="3" placeholder="其他需要说明的事项"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">审核状态：</label>
+                        <input type="text" class="form-input" id="auditStatus" name="auditStatus" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">创建时间：</label>
+                        <input type="text" class="form-input" id="createTime" name="createTime" readonly>
+                    </div>
+                </div>
+                
+                <!-- 表单操作按钮 -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="goBack()">取消</button>
+                    <button type="button" class="btn btn-primary" id="saveButton" onclick="saveApplication()">保存</button>
+                    <button type="button" class="btn btn-success" id="submitButton" onclick="submitApplication()">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- 加载遮罩 -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">正在处理...</div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/travel-report-form.js"></script>
+</body>
+</html>
