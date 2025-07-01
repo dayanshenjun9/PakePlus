@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 审批测试</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .reject-btn {
+            background-color: #dc3545;
+        }
+        .reject-btn:hover {
+            background-color: #c82333;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>移动审批操作接口测试</h1>
+        <p>此页面用于测试修复后的审批接口CORS问题</p>
+        
+        <form id="approvalForm">
+            <div class="form-group">
+                <label for="flow_id">流程ID *</label>
+                <input type="text" id="flow_id" name="flow_id" value="TEST_FLOW_001" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="node_name">审批节点名称 *</label>
+                <input type="text" id="node_name" name="node_name" value="部门审批" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="userData">用户数据 (JSON对象，将自动编码) *</label>
+                <textarea id="userData" name="userData" rows="4" required>{
+  "USER_ID": "test001",
+  "USER_NAME": "测试用户",
+  "DISPLAY_NAME": "测试用户",
+  "ORGCODE": "ORG001",
+  "dept_id": "DEPT001",
+  "dept_name": "测试部门"
+}</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="module">模块名称</label>
+                <input type="text" id="module" name="module" value="差旅申请">
+            </div>
+            
+            <div class="form-group">
+                <label for="flow_remark">审批备注</label>
+                <textarea id="flow_remark" name="flow_remark" rows="2" placeholder="请输入审批意见"></textarea>
+            </div>
+            
+            <button type="button" onclick="testApproval('pass')">通过审批</button>
+            <button type="button" class="reject-btn" onclick="testApproval('reject')">驳回审批</button>
+        </form>
+        
+        <div id="result" class="result"></div>
+        
+        <div style="margin-top: 30px;">
+            <h3>问题排查说明</h3>
+            <div class="info" style="display: block;">
+                <h4>已修复的问题：</h4>
+                <ul>
+                    <li>✅ CORS跨域问题：移除了x-requested-with请求头</li>
+                    <li>✅ 请求格式问题：使用application/json格式</li>
+                    <li>✅ userData参数处理：转换为JSON字符串（移除URL编码）</li>
+                    <li>✅ 添加了必填参数验证</li>
+                    <li>✅ 优化了错误处理和日志记录</li>
+                </ul>
+                
+                <h4>最新修复（参数校验失败）：</h4>
+                <ul>
+                    <li>根据接口文档，userData应为JSON字符串，不需要URL编码</li>
+                    <li>服务器端会自行处理userData的解码</li>
+                    <li>修改编码逻辑：只进行JSON.stringify，不进行encodeURIComponent</li>
+                </ul>
+                
+                <h4>测试步骤：</h4>
+                <ol>
+                    <li>填写测试数据（已预填默认值）</li>
+                    <li>点击"通过审批"或"驳回审批"按钮</li>
+                    <li>查看控制台日志和返回结果</li>
+                    <li>如果仍有CORS错误，请检查服务器端配置</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script>
+        async function testApproval(action) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'none';
+            
+            try {
+                // 获取表单数据
+                const userDataText = document.getElementById('userData').value;
+                let userData;
+                try {
+                    userData = JSON.parse(userDataText);
+                } catch (e) {
+                    showResult('用户数据格式错误，请输入有效的JSON格式', 'error');
+                    return;
+                }
+                
+                const formData = {
+                    flow_id: document.getElementById('flow_id').value,
+                    action: action,
+                    userData: userData, // 传递对象，API会自动处理编码
+                    node_name: document.getElementById('node_name').value,
+                    module: document.getElementById('module').value,
+                    flow_remark: document.getElementById('flow_remark').value
+                };
+                
+                console.log('测试审批请求:', formData);
+                
+                // 显示加载状态
+                showResult('正在发送审批请求...', 'info');
+                
+                // 调用API
+                const result = await API.doApproval(formData);
+                
+                console.log('审批结果:', result);
+                
+                if (result.success) {
+                    showResult(`审批${action === 'pass' ? '通过' : '驳回'}成功！\n消息: ${result.message}`, 'success');
+                } else {
+                    showResult(`审批${action === 'pass' ? '通过' : '驳回'}失败！\n错误码: ${result.code}\n消息: ${result.message}`, 'error');
+                }
+                
+            } catch (error) {
+                console.error('测试审批错误:', error);
+                showResult(`请求失败: ${error.message}`, 'error');
+            }
+        }
+        
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = `result ${type}`;
+            resultDiv.textContent = message;
+            resultDiv.style.display = 'block';
+        }
+        
+        // 页面加载完成后显示当前配置
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('API配置信息:', {
+                baseURL: 'http://219.145.169.207:8099/hmifmobile/',
+                useProxy: false,
+                timeout: 10000
+            });
+            
+            console.log('测试页面已加载，可以开始测试审批接口');
+        });
+    </script>
+</body>
+</html>
