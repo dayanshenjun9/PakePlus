@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>规章制度</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/wechat-ui.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div id="regulationsPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="navigateToHome()">←</button>
+                <span class="page-title">规章制度</span>
+            </div>
+        </div>
+
+        <!-- 主内容区域 - 可滚动 -->
+        <div class="main-content">
+            <ul class="weui-cells" id="regulationsList">
+                <!-- 规章制度列表将通过JS动态加载 -->
+            </ul>
+        </div>
+
+        <!-- 底部导航 -->
+        <div class="bottom-nav">
+            <div class="nav-item" onclick="navigateToHome()">
+                <div class="nav-icon">⌂</div>
+                <span class="nav-label">首页</span>
+            </div>
+            <div class="nav-item" onclick="navigateToApproval()">
+                <div class="nav-icon">✓</div>
+                <span class="nav-label">审批</span>
+            </div>
+            <div class="nav-item" onclick="navigateToProfile()">
+                <div class="nav-icon">◉</div>
+                <span class="nav-label">我的</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/regulations.js"></script>
+</body>
+</html>
