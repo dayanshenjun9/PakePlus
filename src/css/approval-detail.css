@@ -1,0 +1,927 @@
+/* 审批详情样式 */
+
+/* 详情内容区域 */
+.detail-section {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.detail-section h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+}
+
+/* 详情项样式 */
+.detail-item {
+    display: flex;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.detail-item .label {
+    flex: 0 0 100px;
+    color: #666;
+    font-size: 14px;
+}
+
+.detail-item .value {
+    flex: 1;
+    color: #333;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+/* 详情字段样式 */
+.detail-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 表格样式 */
+.detail-table {
+    width: 100%;
+    border-radius: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 1px solid #eee;
+    margin-top: 10px;
+    /* 添加滚动条样式 */
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+/* Webkit浏览器滚动条样式 */
+.detail-table::-webkit-scrollbar {
+    height: 6px;
+}
+
+.detail-table::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.detail-table::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.detail-table::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.table-container {
+    min-width: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-header {
+    display: flex;
+    background-color: #f5f7fa;
+    border-bottom: 1px solid #eee;
+    min-width: max-content;
+}
+
+.header-cell {
+    min-width: 100px;
+    max-width: 200px;
+    width: auto;
+    padding: 10px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #606266;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.table-row {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    min-width: max-content;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-cell {
+    min-width: 100px;
+    max-width: 200px;
+    width: auto;
+    padding: 10px 8px;
+    font-size: 13px;
+    color: #606266;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    word-break: break-all;
+}
+
+/* 附件链接样式 */
+.attachment-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #007bff;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.attachment-link:hover {
+    background-color: #f8f9fa;
+    text-decoration: none;
+}
+
+.attachment-item {
+    margin-bottom: 4px;
+}
+
+.attachment-name {
+    font-weight: 500;
+}
+
+.attachment-size {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-left: 4px;
+}
+
+.attachment-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+/* 文件类型图标 */
+.file-icon-image::before {
+    content: "🖼️";
+}
+
+.file-icon-word::before {
+    content: "📄";
+}
+
+.file-icon-excel::before {
+    content: "📊";
+}
+
+.file-icon-ppt::before {
+    content: "📋";
+}
+
+.file-icon-pdf::before {
+    content: "📕";
+}
+
+.file-icon-default::before {
+    content: "📎";
+}
+
+/* 审批历史样式 */
+.history-item {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    border-left: 1px solid #ddd;
+}
+
+.history-item:last-child {
+    margin-bottom: 0;
+}
+
+.history-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+}
+
+.history-icon {
+    position: absolute;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #2196F3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+}
+
+.history-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.history-user {
+    font-weight: 600;
+    color: #333;
+    margin-right: 5px;
+}
+
+.history-node {
+    color: #666;
+    font-size: 13px;
+}
+
+.history-time {
+    color: #999;
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.history-remark, .history-result {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #666;
+    padding-left: 5px;
+}
+
+.history-result {
+    color: #1e88e5;
+    font-weight: 500;
+}
+
+/* 加载中和错误状态 */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* 错误提示样式 */
+.error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #f44336;
+    text-align: center;
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 15px 0;
+}
+
+.error-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f44336;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.error-text {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.error-retry {
+    padding: 8px 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.error-retry:hover {
+    background-color: #1976D2;
+}
+
+/* 空状态提示 */
+.empty-history {
+    text-align: center;
+    color: #999;
+    padding: 15px 0;
+    font-size: 14px;
+}
+
+/* 审批意见输入框 */
+#approvalRemark {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+#approvalRemark:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.1);
+}
+
+/* 文件预览模态框 */
+.file-preview-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-preview-content {
+    background: white;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    width: 90%;
+}
+
+.file-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.file-preview-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-preview-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.file-preview-close:hover {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.file-preview-body {
+    padding: 20px;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-preview-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.file-preview-iframe {
+    width: 100%;
+    height: 70vh;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.file-preview-error {
+    color: #f44336;
+    font-size: 14px;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffebee;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+}
+
+.file-download-btn {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.file-download-btn:hover {
+    background-color: #1565c0;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(30, 136, 229, 0.3);
+}
+
+/* 审批按钮样式 */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    min-width: 100px;
+}
+
+.btn-approve {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-reject {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-approve:hover {
+    background-color: #43A047;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.btn-reject:hover {
+    background-color: #d32f2f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+/* 审批意见提示样式 */
+.remark-tip {
+    font-size: 12px;
+    color: #ff9800;
+    font-weight: normal;
+}
+
+/* 审批意见输入框样式优化 */
+#approvalRemark {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 80px;
+}
+
+#approvalRemark:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+}
+
+/* 驳回时输入框必填状态 */
+#approvalRemark.required {
+    border-color: #f44336;
+}
+
+#approvalRemark.required:focus {
+    border-color: #f44336;
+    box-shadow: 0 0 5px rgba(244, 67, 54, 0.3);
+}
+
+/* 添加加载指示器样式 */
+.loading-message {
+    color: #666;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 150px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 添加文件类型不支持的消息样式 */
+.unsupported-file-message {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* PDF预览选项样式 */
+.pdf-preview-options {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.pdf-preview-options p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.preview-tip {
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* 文档预览容器 */
+.document-viewer-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.document-preview-title {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.office-preview-frame {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.office-preview-iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+
+.office-preview-fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.office-preview-icon {
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 15px;
+}
+
+.office-icon-word {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iIzIxOTZmMyIgZD0iTTM3IDQ1SDExYy0xLjY1NyAwLTMtMS4zNDMtMy0zVjZjMC0xLjY1NyAxLjM0My0zIDMtM2gyNmMxLjY1NyAwIDMgMS4zNDMgMyAzdjM2YzAgMS42NTctMS4zNDMgMy0zIDN6Ii8+PHBhdGggZmlsbD0iI2VjZWZmMSIgZD0iTTMwIDI0Yy0uNTUzIDAtMS0uNDQ3LTEtMXMuNDQ3LTEgMS0xIDEgLjQ0NyAxIDEtLjQ0NyAxLTEgMXptMC00Yy0uNTUzIDAtMS0uNDQ3LTEtMXMuNDQ3LTEgMS0xIDEgLjQ0NyAxIDEtLjQ0NyAxLTEgMXptMCA4Yy0uNTUzIDAtMS0uNDQ3LTEtMXMuNDQ3LTEgMS0xIDEgLjQ0NyAxIDEtLjQ0NyAxLTEgMXptLTggMGMtLjU1MyAwLTEtLjQ0Ny0xLTFzLjQ0Ny0xIDEtMSAxIC40NDcgMSAxLS40NDcgMS0xIDF6bTAgMGgtNHY0aDR2LTR6bTgtMTJoLTEydjRoMTJ2LTR6bTAgOGgtNHY0aDR2LTR6Ii8+PC9zdmc+');
+}
+
+.office-icon-excel {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTM3IDQ1SDExYy0xLjY1NyAwLTMtMS4zNDMtMy0zVjZjMC0xLjY1NyAxLjM0My0zIDMtM2gyNmMxLjY1NyAwIDMgMS4zNDMgMyAzdjM2YzAgMS42NTctMS4zNDMgMy0zIDN6Ii8+PHBhdGggZmlsbD0iI2U4ZjVlOSIgZD0iTTMwIDI0di00aC0xMnY0aDEyek0xOCAyOHY0aDEydi00aC0xMnptOC04di00aC04djRoOHptLTggMTJ2NGg4di00aC04eiIvPjwvc3ZnPg==');
+}
+
+.office-icon-ppt {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iI2ZmNTcyMiIgZD0iTTM3IDQ1SDExYy0xLjY1NyAwLTMtMS4zNDMtMy0zVjZjMC0xLjY1NyAxLjM0My0zIDMtM2gyNmMxLjY1NyAwIDMgMS4zNDMgMyAzdjM2YzAgMS42NTctMS4zNDMgMy0zIDN6Ii8+PHBhdGggZmlsbD0iI2ZmZjNlMCIgZD0iTTMwIDI0Yy0zLjMxMiAwLTYtMi42ODgtNi02czIuNjg4LTYgNi02IDYgMi42ODggNiA2LTIuNjg4IDYtNiA2em0tMTggMGgxMnYtMTJoLTEydjEyem0wIDEyaDEydi04aC0xMnY4eiIvPjwvc3ZnPg==');
+}
+
+.office-preview-info {
+    text-align: center;
+}
+
+.office-preview-info h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.office-preview-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.preview-hint {
+    font-style: italic;
+    color: #888;
+    margin-top: 10px;
+}
+
+.office-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.office-loading .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #2196f3;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 15px;
+}
+
+/* 新增 Office 预览选项样式 */
+.office-button-container {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.preview-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+.preview-option-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.preview-option-btn:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
+
+.preview-option-btn:active {
+    background-color: #d0d0d0;
+}
+
+/* 文件预览错误可点击链接 */
+.file-preview-error a {
+    color: #1e88e5;
+    text-decoration: underline;
+}
+
+.file-preview-error a:hover {
+    color: #0d47a1;
+}
+
+/* PDF预览样式 */
+.pdf-container {
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+.file-preview-object {
+    display: block;
+    border: none;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.pdf-button-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.pdf-fallback {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Office文档预览样式 */
+.office-preview-frame {
+    width: 100%;
+    margin: 15px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    min-height: 300px;
+}
+
+.office-preview-object {
+    display: block;
+    border: none;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.office-preview-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    flex-direction: column;
+    text-align: center;
+    min-height: 200px;
+}
+
+.office-preview-icon {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 20px;
+}
+
+.office-icon-excel::before {
+    content: "📊";
+    font-size: 48px;
+    line-height: 1;
+}
+
+.office-icon-word::before {
+    content: "📄";
+    font-size: 48px;
+    line-height: 1;
+}
+
+.office-icon-ppt::before {
+    content: "📋";
+    font-size: 48px;
+    line-height: 1;
+}
+
+.office-preview-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.office-preview-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.preview-note {
+    font-size: 13px;
+    font-style: italic;
+    color: #888 !important;
+    margin-top: 15px !important;
+}
+
+.office-action-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    gap: 10px;
+}
+
+.primary-btn {
+    background-color: #2196F3 !important;
+}
+
+.primary-btn:hover {
+    background-color: #1976D2 !important;
+}
+
+.btn-icon {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+/* Office文档内嵌预览样式 */
+.office-preview-iframe {
+    display: block;
+    width: 100%;
+    height: 500px;
+    border: none;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.office-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.office-loading p {
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+.preview-hint {
+    font-size: 13px;
+    color: #666;
+    margin-top: 10px;
+}
