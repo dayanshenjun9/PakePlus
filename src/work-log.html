@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 工作日志</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 工作日志页面 -->
+    <div id="workLogPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="navigateToProfile()">←</button>
+                <span class="page-title">工作日志</span>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <!-- 数据列表区域 -->
+            <div class="data-list">
+                <div class="action-buttons">
+                    <button type="button" class="btn btn-primary" onclick="createNewWorkLog()">+ 新增</button>
+                </div>
+
+                <div class="business-module-list">
+                    <div class="list-header">
+                        <span class="header-title">工作日志列表</span>
+                    </div>
+                </div>
+                <div class="list-content" id="workLogList">
+                    <!-- 动态加载的工作日志列表 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增/编辑工作日志弹窗 -->
+    <div id="workLogModal" class="modal">
+        <div class="modal-content work-log-modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">新增工作日志</h3>
+                <button class="modal-close" onclick="closeWorkLogModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="workLogForm">
+                    <div class="form-group">
+                        <label for="startTime">工作时间</label>
+                        <input type="datetime-local" id="startTime" name="startTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="routeAddress">行程地点</label>
+                        <input type="text" id="routeAddress" name="routeAddress" placeholder="请输入行程地点" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="members">参与人员</label>
+                        <input type="text" id="members" name="members" placeholder="请输入参与人员">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">主要事项</label>
+                        <textarea id="content" name="content" rows="4" placeholder="请输入主要事项" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="advise">对策建议</label>
+                        <textarea id="advise" name="advise" rows="3" placeholder="请输入对策建议"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="signIn">出勤</label>
+                        <select id="signIn" name="signIn" required>
+                            <option value="">请选择出勤状态</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" onclick="closeWorkLogModal()">取消</button>
+                <button type="button" class="btn btn-primary" onclick="submitWorkLog()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认删除弹窗 -->
+    <div id="deleteConfirmModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="confirm-header">
+                <h3>确认删除</h3>
+            </div>
+            <div class="confirm-body">
+                <p>确定要删除这条工作日志吗？删除后无法恢复。</p>
+            </div>
+            <div class="confirm-footer">
+                <button class="btn btn-cancel" onclick="closeDeleteConfirmModal()">取消</button>
+                <button class="btn btn-danger" onclick="confirmDeleteWorkLog()">删除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div id="toast" class="toast"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/work-log.js"></script>
+</body>
+</html>
