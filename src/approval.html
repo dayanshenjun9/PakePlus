@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 审批</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/approval-detail.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 审批页面 -->
+    <div id="approvalPage" class="page active">
+
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <button class="back-btn" onclick="navigateToHome()">←</button>
+            <h2 class="page-title">审批</h2>
+            <div class="header-actions"></div>
+        </div>
+
+        <!-- 主内容区域 - 可滚动 -->
+        <div class="main-content">
+            <!-- 审批标签页 -->
+            <div class="approval-tabs">
+                <div class="tab-item active" onclick="switchApprovalTab('pending')">
+                    <span>待处理</span>
+                </div>
+                <div class="tab-item" onclick="switchApprovalTab('processed')">
+                    <span>已处理</span>
+                </div>
+                <div class="tab-item" onclick="switchApprovalTab('completed')">
+                    <span>已完成</span>
+                </div>
+            </div>
+
+            <!-- 待审批列表 -->
+            <div id="pendingList" class="approval-list">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <span>加载中...</span>
+                </div>
+            </div>
+
+            <!-- 已处理列表 -->
+            <div id="processedList" class="approval-list" style="display: none;">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <span>加载中...</span>
+                </div>
+            </div>
+
+            <!-- 已完成列表 -->
+            <div id="completedList" class="approval-list" style="display: none;">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <span>加载中...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航 -->
+        <div class="bottom-nav">
+            <div class="nav-item" onclick="navigateToHome()">
+                <div class="nav-icon">⌂</div>
+                <span class="nav-label">首页</span>
+            </div>
+            <div class="nav-item active" onclick="navigateToApproval()">
+                <div class="nav-icon">✓</div>
+                <span class="nav-label">审批</span>
+            </div>
+            <div class="nav-item" onclick="navigateToProfile()">
+                <div class="nav-icon">◉</div>
+                <span class="nav-label">我的</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 审批详情弹窗 -->
+    <div id="approvalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">审批详情</h3>
+                <button class="modal-close" onclick="closeApprovalModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 审批详情内容 -->
+                <div class="approval-detail">
+                    <div class="detail-section">
+                        <h4>基本信息</h4>
+                        <div class="detail-item">
+                            <span class="label">申请人：</span>
+                            <span class="value" id="applicantName">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">申请时间：</span>
+                            <span class="value" id="applyTime">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">流程名称：</span>
+                            <span class="value" id="flowName">-</span>
+                        </div>
+                        <div class="detail-item" style="display: none;">
+                            <span class="label">申请部门：</span>
+                            <span class="value" id="applyDepartment">-</span>
+                        </div>
+                        <div class="detail-item" style="display: none;">
+                            <span class="label">申请日期：</span>
+                            <span class="value" id="applyDate">-</span>
+                        </div>
+                        <div class="detail-item" style="display: none;">
+                            <span class="label">创建人：</span>
+                            <span class="value" id="creator">-</span>
+                        </div>
+                        <div class="detail-item" style="display: none;">
+                            <span class="label">创建时间：</span>
+                            <span class="value" id="createTime">-</span>
+                        </div>
+                    </div>
+
+                    <!-- 动态详情内容将渲染到这里 -->
+                    <div id="approvalDetailContent" class="detail-section"></div>
+
+                    <!-- 审批历史将渲染到这里 -->
+                    <div id="approvalHistory" class="detail-section"></div>
+                    
+                    <div class="detail-section">
+                        <h4>审批意见 <span class="remark-tip">（驳回时必填）</span></h4>
+                        <textarea id="approvalRemark" placeholder="请输入审批意见（驳回时必须填写）" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-reject" onclick="performApproval('reject')">驳回</button>
+                <button class="btn btn-approve" onclick="performApproval('pass')">通过</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认对话框 -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="confirm-header">
+                <h3>温馨提示</h3>
+            </div>
+            <div class="confirm-body">
+                <p id="confirmMessage">确定要执行此操作吗？</p>
+            </div>
+            <div class="confirm-footer">
+                <button class="btn btn-cancel" onclick="closeConfirmModal()">取消</button>
+                <button class="btn btn-confirm" onclick="confirmAction()">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div id="toast" class="toast"></div>
+
+    <!-- 文件预览模态框 -->
+    <div id="filePreviewModal" class="file-preview-modal">
+        <div class="file-preview-content">
+            <div class="file-preview-header">
+                <h3 class="file-preview-title" id="filePreviewTitle">文件预览</h3>
+                <button class="file-preview-close" onclick="closeFilePreview()">×</button>
+            </div>
+            <div class="file-preview-body" id="filePreviewBody">
+                <!-- 文件预览内容将在这里动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/approvalDetail.js"></script>
+    <script src="js/approval.js"></script>
+    <script src="js/file-preview.js"></script>
+</body>
+</html>
