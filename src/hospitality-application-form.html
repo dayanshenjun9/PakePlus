@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 招待申请表</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/form-enhancements.css">
+    <link rel="stylesheet" href="css/wechat-ui.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 招待申请表单页面 -->
+    <div id="hospitalityApplicationFormPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='hospitality-application.html'">←</button>
+                <span class="page-title">招待申请表单</span>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <form id="hospitalityApplicationForm" class="form-container">
+                <!-- 单据ID (隐藏) -->
+                <div class="form-group" style="display: none;">
+                    <label class="form-label">单据ID (ApplicationID)：</label>
+                    <input type="text" class="form-input" id="applicationID" placeholder="系统自动生成" readonly>
+                </div>
+
+                <!-- 编号 -->
+                <div class="form-group">
+                    <label class="form-label">编号 (ApplicationNo)：</label>
+                    <input type="text" class="form-input" id="applicationNo" placeholder="系统自动生成" readonly>
+                </div>
+
+                <!-- 招待类型 -->
+                <div class="wx-form-group">
+                    <label class="form-label wx-form-label required">招待类型 (HospitalityType)：</label>
+                    <div class="wx-input">
+                        <input type="text" class="form-input wx-input-value" id="hospitalityType" placeholder="请输入招待类型" required>
+                    </div>
+                </div>
+
+                <!-- 经办人 -->
+                <div class="form-group">
+                    <label class="form-label required">经办人 (HandlePerson)：</label>
+                    <input type="text" class="form-input" id="handlePerson" placeholder="请输入经办人">
+                </div>
+
+                <!-- 招待日期 -->
+                <div class="wx-form-group">
+                    <label class="form-label wx-form-label required">招待日期 (HospitalityDate)：</label>
+                    <div class="wx-date-picker">
+                        <input type="date" class="form-input wx-date-picker-input" id="hospitalityDate" required>
+                    </div>
+                </div>
+
+                <!-- 部门ID -->
+                <div class="form-group" style="display: none;">
+                    <label class="form-label">部门ID (DeptID)：</label>
+                    <input type="text" class="form-input" id="deptID" readonly>
+                </div>
+                
+                <!-- 部门名称 -->
+                <div class="form-group">
+                    <label class="form-label">部门名称 (DEPT_NAME)：</label>
+                    <input type="text" class="form-input" id="deptName" readonly>
+                </div>
+
+                <!-- 客户/来宾单位 -->
+                <div class="form-group">
+                    <label class="form-label required">客户/来宾单位 (CustomerName)：</label>
+                    <input type="text" class="form-input" id="customerName" placeholder="请输入客户/来宾单位" required>
+                </div>
+
+                <!-- 总计人数 -->
+                <div class="form-group">
+                    <label class="form-label required">总计人数 (TotalNum)：</label>
+                    <input type="number" class="form-input" id="totalNum" placeholder="请输入总计人数" required>
+                </div>
+
+                <!-- 招待负责人 -->
+                <div class="form-group">
+                    <label class="form-label required">招待负责人 (DutyPerson)：</label>
+                    <input type="text" class="form-input" id="dutyPerson" placeholder="请输入招待负责人" required>
+                </div>
+
+                <!-- 招待地点 -->
+                <div class="form-group">
+                    <label class="form-label required">招待地点 (HospitalityPlace)：</label>
+                    <input type="text" class="form-input" id="hospitalityPlace" placeholder="请输入招待地点" required>
+                </div>
+
+                <!-- 公司陪同人员 -->
+                <div class="form-group">
+                    <label class="form-label">公司陪同人员 (Entourage)：</label>
+                    <textarea class="form-textarea" id="entourage" placeholder="请输入公司陪同人员" rows="2"></textarea>
+                </div>
+
+                <!-- 费用预算 -->
+                <div class="form-group">
+                    <label class="form-label required">费用预算 (CostBudget)：</label>
+                    <input type="number" class="form-input" id="costBudget" placeholder="请输入费用预算（元）" required>
+                </div>
+
+                <!-- 招待事由 -->
+                <div class="form-group">
+                    <label class="form-label required">招待事由 (HospitalityCause)：</label>
+                    <textarea class="form-textarea" id="hospitalityCause" placeholder="请输入招待事由" rows="4" required></textarea>
+                </div>
+
+                <!-- 备注 -->
+                <div class="form-group">
+                    <label class="form-label">备注 (Remark)：</label>
+                    <textarea class="form-textarea" id="remark" placeholder="请输入备注信息" rows="2"></textarea>
+                </div>
+
+                <!-- 审核状态 -->
+                <div class="form-group">
+                    <label class="form-label">审核状态 (AuditStauts)：</label>
+                    <input type="text" class="form-input" id="statusName" readonly>
+                </div>
+
+                <!-- 创建时间 -->
+                <div class="form-group">
+                    <label class="form-label">创建时间 (CreateTime)：</label>
+                    <input type="text" class="form-input" id="createTime" readonly>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='hospitality-application.html'">取消</button>
+                    <button type="button" class="btn btn-outline" id="saveBtn" onclick="saveDraft()">保存</button>
+                    <button type="button" class="btn btn-primary" onclick="submitApplication()">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/hospitality-application-form.js"></script>
+</body>
+</html> 
