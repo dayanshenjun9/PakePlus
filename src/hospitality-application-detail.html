@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 招待申请详情</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/form-enhancements.css">
+    <link rel="stylesheet" href="css/wechat-ui.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 招待申请详情页面 -->
+    <div id="hospitalityApplicationDetailPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='hospitality-application.html'">←</button>
+                <span class="page-title">招待申请详情</span>
+            </div>
+            <div class="header-right">
+                <button class="action-btn" onclick="printHospitalityApplication()">
+                    <i class="icon-print"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <div class="detail-container">
+                <!-- 状态指示器 -->
+                <div class="status-indicator">
+                    <div class="status-icon" id="statusIcon"></div>
+                    <span class="status-text" id="statusText">加载中...</span>
+                </div>
+                
+                <!-- 基础信息 -->
+                <div class="detail-section">
+                    <h3 class="section-title">基础信息</h3>
+                    <div class="detail-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">申请单号：</span>
+                            <span class="detail-value" id="applicationNo">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">经办人：</span>
+                            <span class="detail-value" id="handlePerson">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">创建时间：</span>
+                            <span class="detail-value" id="createTime">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">部门：</span>
+                            <span class="detail-value" id="deptName">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 招待信息 -->
+                <div class="detail-section">
+                    <h3 class="section-title">招待信息</h3>
+                    <div class="detail-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">招待类型：</span>
+                            <span class="detail-value" id="hospitalityType">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">招待日期：</span>
+                            <span class="detail-value" id="hospitalityDate">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">客户/来宾单位：</span>
+                            <span class="detail-value" id="customerName">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">总计人数：</span>
+                            <span class="detail-value" id="totalNum">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">招待负责人：</span>
+                            <span class="detail-value" id="dutyPerson">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">招待地点：</span>
+                            <span class="detail-value" id="hospitalityPlace">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">公司陪同人员：</span>
+                            <span class="detail-value" id="entourage">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">费用预算：</span>
+                            <span class="detail-value" id="costBudget">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">招待事由：</span>
+                            <span class="detail-value" id="hospitalityCause">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 审批信息 -->
+                <div class="detail-section">
+                    <h3 class="section-title">审批信息</h3>
+                    <div class="detail-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">审批状态：</span>
+                            <span class="detail-value" id="auditStatus">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 其他信息 -->
+                <div class="detail-section">
+                    <h3 class="section-title">其他信息</h3>
+                    <div class="detail-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">备注：</span>
+                            <span class="detail-value" id="remark">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/hospitality-application-detail.js"></script>
+</body>
+</html> 
