@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 个人中心</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 个人中心页面 -->
+    <div id="profilePage" class="page active">
+
+        <!-- 页面头部 -->
+        <div class="page-header profile-header">
+            <button class="back-btn" onclick="navigateToHome()">←</button>
+            <h2 class="page-title" id="profileTitle">我的</h2>
+            <button class="chat-btn" onclick="showComingSoon()">💬</button>
+        </div>
+
+        <!-- 主内容区域 - 可滚动 -->
+        <div class="main-content">
+            <!-- 用户信息区域 -->
+            <div class="user-info-section">
+                <div class="user-avatar">
+                    <div class="avatar-icon">👤</div>
+                </div>
+                <div class="user-details">
+                    <h3 class="user-name" id="userName">加载中...</h3>
+                    <p class="user-dept" id="userDept">加载中...</p>
+                    <p class="company-name" id="companyName">陕西红马科技有限公司</p>
+                </div>
+            </div>
+
+            <!-- 功能菜单 -->
+            <div class="profile-menu">
+            <div class="menu-item" onclick="checkForUpdates()">
+                <div class="menu-icon">⚠️</div>
+                <span class="menu-label">检测更新</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item" onclick="navigateToWorkLog()">
+                <div class="menu-icon">📝</div>
+                <span class="menu-label">工作日志</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item" onclick="showAbout()">
+                <div class="menu-icon">ℹ️</div>
+                <span class="menu-label">关于</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item" onclick="systemRepair()">
+                <div class="menu-icon">🔧</div>
+                <span class="menu-label">系统一键修复</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item logout-item" onclick="showLogoutConfirm()">
+                <div class="menu-icon">🚪</div>
+                <span class="menu-label">退出登录</span>
+                <span class="menu-arrow">›</span>
+            </div>
+        </div>
+
+        <!-- 底部导航 -->
+        <div class="bottom-nav">
+            <div class="nav-item" onclick="navigateToHome()">
+                <div class="nav-icon">⌂</div>
+                <span class="nav-label">首页</span>
+            </div>
+            <div class="nav-item" onclick="navigateToApproval()">
+                <div class="nav-icon">✓</div>
+                <span class="nav-label">审批</span>
+            </div>
+            <div class="nav-item active" onclick="navigateToProfile()">
+                <div class="nav-icon">◉</div>
+                <span class="nav-label">我的</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认对话框 -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="confirm-header">
+                <h3>温馨提示</h3>
+            </div>
+            <div class="confirm-body">
+                <p id="confirmMessage">确定要退出登录吗？</p>
+            </div>
+            <div class="confirm-footer">
+                <button class="btn btn-cancel" onclick="closeConfirmModal()">稍后再说</button>
+                <button class="btn btn-confirm" onclick="confirmAction()">是的</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 关于弹窗 -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>关于易掌通</h3>
+                <button class="modal-close" onclick="closeAboutModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="about-content">
+                    <div class="about-logo">
+                        <div class="logo-icon">$</div>
+                        <h2>易掌通</h2>
+                    </div>
+                    <div class="about-info">
+                        <p><strong>版本号：</strong>v1.0.0</p>
+                        <p><strong>发布时间：</strong>2024年1月</p>
+                        <p><strong>开发商：</strong>陕西红马科技有限公司</p>
+                        <p><strong>产品介绍：</strong>易掌通是一款专为企业打造的移动审批系统，支持多级审批、动态表单、实时通知等功能，让审批更高效、更便捷。</p>
+                    </div>
+                    <div class="about-features">
+                        <h4>主要功能</h4>
+                        <ul>
+                            <li>移动端审批操作</li>
+                            <li>实时消息推送</li>
+                            <li>多级审批流程</li>
+                            <li>审批历史查询</li>
+                            <li>离线数据缓存</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
