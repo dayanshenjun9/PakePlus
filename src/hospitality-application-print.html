@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 招待申请打印</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/form-enhancements.css">
+    <link rel="stylesheet" href="css/print.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 招待申请打印页面 -->
+    <div id="hospitalityApplicationPrintPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="history.back()">←</button>
+                <span class="page-title">招待申请打印</span>
+            </div>
+            <div class="header-right">
+                <button class="action-btn" onclick="printDocument()">
+                    <i class="icon-print"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <div class="print-container" id="printArea">
+                <div class="print-header">
+                    <h1 class="print-title">招待申请单</h1>
+                    <div class="print-subtitle">
+                        <span id="printDocumentNo">单据编号：-</span>
+                        <span id="printDocumentDate">申请日期：-</span>
+                    </div>
+                </div>
+                
+                <div class="print-content">
+                    <table class="print-table">
+                        <tr>
+                            <td class="label-cell" width="20%">经办人：</td>
+                            <td class="value-cell" width="30%" id="handlePerson">-</td>
+                            <td class="label-cell" width="20%">部门：</td>
+                            <td class="value-cell" width="30%" id="deptName">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">招待类型：</td>
+                            <td class="value-cell" id="hospitalityType">-</td>
+                            <td class="label-cell">招待日期：</td>
+                            <td class="value-cell" id="hospitalityDate">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">客户/来宾单位：</td>
+                            <td class="value-cell" id="customerName">-</td>
+                            <td class="label-cell">总计人数：</td>
+                            <td class="value-cell" id="totalNum">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">招待负责人：</td>
+                            <td class="value-cell" id="dutyPerson">-</td>
+                            <td class="label-cell">招待地点：</td>
+                            <td class="value-cell" id="hospitalityPlace">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">公司陪同人员：</td>
+                            <td class="value-cell" colspan="3" id="entourage">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">费用预算：</td>
+                            <td class="value-cell" id="costBudget">-</td>
+                            <td class="label-cell">审批状态：</td>
+                            <td class="value-cell" id="auditStatus">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">招待事由：</td>
+                            <td class="value-cell" colspan="3" id="hospitalityCause">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">备注：</td>
+                            <td class="value-cell" colspan="3" id="remark">-</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="signature-section">
+                        <div class="signature-row">
+                            <div class="signature-item">
+                                <div class="signature-label">经办人签名：</div>
+                                <div class="signature-value">________________</div>
+                            </div>
+                            <div class="signature-item">
+                                <div class="signature-label">部门负责人签名：</div>
+                                <div class="signature-value">________________</div>
+                            </div>
+                        </div>
+                        <div class="signature-row">
+                            <div class="signature-item">
+                                <div class="signature-label">财务负责人签名：</div>
+                                <div class="signature-value">________________</div>
+                            </div>
+                            <div class="signature-item">
+                                <div class="signature-label">总经理签名：</div>
+                                <div class="signature-value">________________</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="print-footer">
+                    <div class="print-footer-text">本单据由易掌通系统生成，打印时间：<span id="printTime">-</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/hospitality-application-print.js"></script>
+</body>
+</html> 
