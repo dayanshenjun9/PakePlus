@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 出差管理</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 出差管理页面 -->
+    <div id="businessTravelPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="navigateToHome()">←</button>
+                <span class="page-title">出差管理</span>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <!-- 功能模块列表 -->
+            <div class="business-module-list">
+                <!-- 交通工具变更 -->
+                <div class="module-item" onclick="navigateToModule('vehicle-change')">
+                    <div class="module-icon orange-bg">
+                        <span class="icon">🚗</span>
+                    </div>
+                    <div class="module-content">
+                        <span class="module-title">交通工具变更</span>
+                        <span class="module-desc">修改出差交通工具安排</span>
+                    </div>
+                    <div class="module-arrow">›</div>
+                </div>
+
+                <!-- 出差申请 -->
+                <div class="module-item" onclick="navigateToModule('travel-application')">
+                    <div class="module-icon yellow-bg">
+                        <span class="icon">📝</span>
+                    </div>
+                    <div class="module-content">
+                        <span class="module-title">出差申请</span>
+                        <span class="module-desc">提交新的出差申请</span>
+                    </div>
+                    <div class="module-arrow">›</div>
+                </div>
+
+                <!-- 出差报告单 - 已隐藏 -->
+                <div class="module-item" onclick="navigateToModule('travel-report')" style="display: none;">
+                    <div class="module-icon pink-bg">
+                        <span class="icon">📋</span>
+                    </div>
+                    <div class="module-content">
+                        <span class="module-title">出差报告单</span>
+                        <span class="module-desc">填写出差工作报告</span>
+                    </div>
+                    <div class="module-arrow">›</div>
+                </div>
+
+                <!-- 招待申请单 -->
+                <div class="module-item" onclick="navigateToModule('hospitality-application')">
+                    <div class="module-icon blue-bg">
+                        <span class="icon">🍽️</span>
+                    </div>
+                    <div class="module-content">
+                        <span class="module-title">招待申请单</span>
+                        <span class="module-desc">申请客户招待费用</span>
+                    </div>
+                    <div class="module-arrow">›</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="js/business-travel.js"></script>
+    <script>
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('出差管理页面已加载');
+        });
+    </script>
+</body>
+</html>
