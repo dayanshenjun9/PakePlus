@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 交通工具变更申请打印</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/form-enhancements.css">
+    <link rel="stylesheet" href="css/print.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 交通工具变更申请打印页面 -->
+    <div id="vehicleChangePrintPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="history.back()">←</button>
+                <span class="page-title">交通工具变更申请打印</span>
+            </div>
+            <div class="header-right">
+                <button class="action-btn" onclick="printDocument()">
+                    <i class="icon-print"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <div class="print-container" id="printArea">
+                <div class="print-header">
+                    <h1 class="print-title">交通工具变更申请单</h1>
+                    <div class="print-subtitle">
+                        <span id="printDocumentNo">单据编号：-</span>
+                        <span id="printDocumentDate">申请日期：-</span>
+                    </div>
+                </div>
+                
+                <div class="print-content">
+                    <table class="print-table">
+                        <tr>
+                            <td class="label-cell" width="20%">申请人：</td>
+                            <td class="value-cell" width="30%" id="creator">-</td>
+                            <td class="label-cell" width="20%">职位：</td>
+                            <td class="value-cell" width="30%" id="roleID">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">计划出行时间：</td>
+                            <td class="value-cell" id="planDate">-</td>
+                            <td class="label-cell">原计划出行方式：</td>
+                            <td class="value-cell" id="planTripMode">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">原定交通工具标准：</td>
+                            <td class="value-cell" id="planVehicle">-</td>
+                            <td class="label-cell">原定交通工具费用：</td>
+                            <td class="value-cell" id="planVehiclePrice">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">申请变更标准：</td>
+                            <td class="value-cell" id="changePlanVehicle">-</td>
+                            <td class="label-cell">变更后预计费用：</td>
+                            <td class="value-cell" id="changeCost">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">变更原因：</td>
+                            <td class="value-cell" colspan="3" id="changeCause">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">备注：</td>
+                            <td class="value-cell" colspan="3" id="remark">-</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="approval-section">
+                        <h3>审批信息</h3>
+                        <table class="print-table">
+                            <tr>
+                                <td class="label-cell" width="20%">部门负责人意见：</td>
+                                <td class="value-cell" width="80%" id="dutyPersonOpinion">-</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">副总经理意见：</td>
+                                <td class="value-cell" id="vicePresidentOpinion">-</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">总经理意见：</td>
+                                <td class="value-cell" id="generalOpinion">-</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">审批状态：</td>
+                                <td class="value-cell" id="auditStatus">-</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="signature-section">
+                        <div class="signature-row">
+                            <div class="signature-item">
+                                <div class="signature-label">申请人签名：</div>
+                                <div class="signature-value">________________</div>
+                            </div>
+                            <div class="signature-item">
+                                <div class="signature-label">部门负责人签名：</div>
+                                <div class="signature-value">________________</div>
+                            </div>
+                        </div>
+                        <div class="signature-row">
+                            <div class="signature-item">
+                                <div class="signature-label">副总经理签名：</div>
+                                <div class="signature-value">________________</div>
+                            </div>
+                            <div class="signature-item">
+                                <div class="signature-label">总经理签名：</div>
+                                <div class="signature-value">________________</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="print-footer">
+                    <div class="print-footer-text">本单据由易掌通系统生成，打印时间：<span id="printTime">-</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/vehicle-change-print.js"></script>
+</body>
+</html> 
