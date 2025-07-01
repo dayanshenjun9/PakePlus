@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 出差报告</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <!-- 出差报告单页面 -->
+    <div id="travelReportPage" class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="navigateToBusinessTravel()">←</button>
+                <span class="page-title">出差报告单</span>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <!-- 数据列表区域 -->
+            <div class="data-list">
+                <div class="action-buttons">
+                    <button type="button" class="btn btn-primary" onclick="createNewApplication()">+ 新增</button>
+                </div>
+
+                <div class="business-module-list">
+                    <div class="list-header">
+                    <span class="header-title">出差报告单列表</span>
+                </div>
+                </div>
+                <div class="list-content" id="applicationList">
+                    <!-- 动态加载的申请列表 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/travel-report.js"></script>
+</body>
+</html>
