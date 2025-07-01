@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>通知详情</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+    <style>
+        .page {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .notification-detail {
+            padding: 20px;
+            background: white;
+        }
+        
+        .notification-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .notification-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .notification-content {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .notification-type {
+            color: #3f51b5;
+            font-weight: 500;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 30px;
+            color: #ff4d4f;
+        }
+    </style>
+</head>
+<body>
+    <!-- 通知详情页面 -->
+    <div class="page active">
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="history.back()">←</button>
+                <span class="page-title">通知详情</span>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="notification-detail" id="notificationDetail">
+                <div class="loading">加载中...</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast 提示 -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/notification-detail.js"></script>
+</body>
+</html> 
