@@ -1,0 +1,114 @@
+/**
+ * 微信UI风格样式
+ * 模拟微信小程序的UI组件样式
+ */
+
+/* 微信风格日期选择器 */
+.wx-date-picker {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.wx-date-picker-input {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #333;
+    line-height: 45px;
+}
+
+.wx-date-picker-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #07C160;
+}
+
+/* 微信风格下拉框 */
+.wx-select {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.wx-select-value {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #333;
+    line-height: 45px;
+    cursor: pointer;
+}
+
+.wx-select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #07C160;
+}
+
+/* 日期显示样式 */
+.wx-date-display {
+    display: block;
+    padding: 10px 15px;
+    background-color: #F7F7F7;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+/* 日期值显示 */
+.wx-date-value {
+    color: #07C160;
+    font-weight: 500;
+}
+
+/* 移除重复显示的日期 */
+.date-duplicate-hidden {
+    display: none;
+}
+
+/* 微信风格表单组 */
+.wx-form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.wx-form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+    font-weight: normal;
+}
+
+.wx-form-label.required:after {
+    content: '*';
+    color: #FA5151;
+    margin-left: 4px;
+}
