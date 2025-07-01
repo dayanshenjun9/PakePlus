@@ -1,0 +1,304 @@
+/* 图标样式文件 */
+/* 为移动端审批系统提供统一的图标样式 */
+
+/* 基础图标样式 */
+.icon {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+/* 用户相关图标 */
+.icon-user::before {
+    content: "👤";
+}
+
+.icon-lock::before {
+    content: "🔒";
+}
+
+/* 功能模块图标 */
+.icon-approval {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+}
+
+.icon-process {
+    background: linear-gradient(135deg, #2196f3, #1565c0);
+}
+
+.icon-reminder {
+    background: linear-gradient(135deg, #ff9800, #ef6c00);
+}
+
+.icon-task {
+    background: linear-gradient(135deg, #e91e63, #ad1457);
+}
+
+.icon-mytask {
+    background: linear-gradient(135deg, #9c27b0, #6a1b9a);
+}
+
+.icon-more {
+    background: linear-gradient(135deg, #607d8b, #37474f);
+}
+
+/* 状态图标 */
+.icon-pending {
+    color: #ff9800;
+}
+
+/* 出差申请相关图标 */
+.icon-plane::before { content: '✈️'; }
+.icon-calendar::before { content: '📅'; }
+.icon-location::before { content: '📍'; }
+.icon-clock::before { content: '🕐'; }
+.icon-money::before { content: '💰'; }
+.icon-eye::before { content: '👁️'; }
+.icon-edit::before { content: '✏️'; }
+.icon-more::before { content: '⋯'; }
+
+/* 列表容器优化 */
+.application-list {
+    padding: 8px 0;
+    background: #f5f5f5;
+}
+
+/* 空状态优化 */
+.application-list .empty-state {
+    padding: 60px 20px;
+    background: white;
+    margin: 16px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.application-list .empty-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: rgba(102, 126, 234, 0.3);
+}
+
+.application-list .empty-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.application-list .empty-desc {
+    font-size: 14px;
+    color: #7f8c8d;
+    line-height: 1.5;
+}
+
+/* 加载状态优化 */
+.application-list .loading-state {
+    padding: 60px 20px;
+    background: white;
+    margin: 16px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.application-list .loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(102, 126, 234, 0.1);
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: iconSpin 1.2s linear infinite;
+    margin-bottom: 20px;
+}
+
+.application-list .loading-text {
+    font-size: 16px;
+    color: #667eea;
+    font-weight: 500;
+}
+
+@keyframes iconSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.icon-approved {
+    color: #4caf50;
+}
+
+.icon-rejected {
+    color: #f44336;
+}
+
+/* 导航图标 - 更新为简洁风格 */
+.icon-home::before {
+    content: "⌂";
+}
+
+.icon-approval-nav::before {
+    content: "✓";
+}
+
+.icon-profile::before {
+    content: "◉";
+}
+
+/* 操作图标 */
+.icon-back::before {
+    content: "←";
+}
+
+.icon-close::before {
+    content: "×";
+}
+
+.icon-chat::before {
+    content: "💬";
+}
+
+.icon-arrow-right::before {
+    content: "›";
+}
+
+/* 功能图标 */
+.icon-update::before {
+    content: "⚠️";
+}
+
+.icon-log::before {
+    content: "📝";
+}
+
+.icon-about::before {
+    content: "ℹ️";
+}
+
+.icon-repair::before {
+    content: "🔧";
+}
+
+/* 消息图标 */
+.icon-message::before {
+    content: "📢";
+}
+
+.icon-notification::before {
+    content: "🔔";
+}
+
+/* 文档图标 */
+.icon-document::before {
+    content: "📋";
+}
+
+.icon-company::before {
+    content: "🏢";
+}
+
+/* 动画效果 */
+.icon-spin {
+    animation: icon-spin 1s linear infinite;
+}
+
+@keyframes icon-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 图标大小变体 */
+.icon-xs {
+    font-size: 12px;
+}
+
+.icon-sm {
+    font-size: 14px;
+}
+
+.icon-md {
+    font-size: 16px;
+}
+
+.icon-lg {
+    font-size: 20px;
+}
+
+.icon-xl {
+    font-size: 24px;
+}
+
+/* 图标颜色变体 */
+.icon-primary {
+    color: #1e88e5;
+}
+
+.icon-success {
+    color: #4caf50;
+}
+
+.icon-warning {
+    color: #ff9800;
+}
+
+.icon-danger {
+    color: #f44336;
+}
+
+.icon-info {
+    color: #2196f3;
+}
+
+.icon-muted {
+    color: #999;
+}
+
+.icon-white {
+    color: white;
+}
+
+/* 修复首页undefined图标问题 */
+.grid-name,
+.grid-label {
+    font-size: 14px;
+    color: #333;
+    margin-top: 8px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+
+/* 确保功能模块图标显示正常 */
+.function-grid .grid-item img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* 处理图标容器 */
+.function-grid .grid-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: white;
+    font-size: 24px;
+    position: relative;
+}
+
+/* 确保SVG图标在图标容器中居中显示 */
+.function-grid .grid-icon svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
