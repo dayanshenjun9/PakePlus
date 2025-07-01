@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>易掌通 - 首页</title>
+    <!-- 预加载关键图片 -->
+    <link rel="preload" href="images/hmif/banner_01.jpg" as="image">
+    <link rel="preload" href="images/hmif/banner_02.jpg" as="image">
+    <link rel="preload" href="images/hmif/default-banner.png" as="image">
+    <link rel="preload" href="images/hmif/default-icon.png" as="image">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <!-- 用户认证检查 -->
+    <script src="js/auth-check.js"></script>
+    <!-- 内联默认图标样式 -->
+    <style>
+        /* 默认图标样式，防止undefined显示 */
+        .function-grid .grid-item {
+            text-align: center;
+            position: relative;
+        }
+        /* 隐藏可能出现的undefined文本 */
+        .function-grid .grid-item:has(> .grid-label:empty)::after,
+        .function-grid .grid-item:has(> span:empty)::after {
+            content: '功能项';
+            font-size: 14px;
+            color: #333;
+            margin-top: 8px;
+            display: block;
+        }
+        
+        /* 隐藏所有动态生成的功能项 */
+        .function-grid .grid-item:not([onclick]) {
+            display: none !important;
+        }
+        
+        /* 只显示出差管理和待办 */
+        .function-grid .grid-item[onclick="navigateToBusinessTravel()"],
+        .function-grid .grid-item[onclick="navigateToApproval()"] {
+            display: flex !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页 -->
+    <div id="mainPage" class="page active">
+
+        <!-- 应用头部 -->
+        <div class="app-header">
+            <div class="header-left">
+                <div class="app-icon">$</div>
+                <span class="app-name">易掌通</span>
+            </div>
+            <div class="header-right">
+                <button class="logout-btn" onclick="showLogoutConfirm()">退出登录</button>
+            </div>
+        </div>
+
+        <!-- 主内容区域 - 可滚动 -->
+        <div class="main-content">
+            <!-- 轮播图区域 -->
+            <div class="banner-container">
+                <div class="banner-slider" id="bannerSlider">
+                    <!-- 预渲染轮播图占位，提高加载速度 -->
+                    <div class="banner-slide" style="display:block; width:100%; height:100%">
+                        <img src="images/hmif/banner_01.jpg" alt="Banner 1" 
+                             loading="eager" decoding="sync" importance="high" 
+                             style="width:100%; height:100%; object-fit:cover; border-radius:20px">
+                    </div>
+                </div>
+                <div class="banner-dots" id="bannerDots">
+                    <span class="dot active"></span>
+                </div>
+                <div class="banner-placeholder" style="display:none">
+                    <span>加载中...</span>
+                </div>
+            </div>
+
+            <!-- 功能模块网格 -->
+            <div class="function-grid">
+            <div class="grid-item" onclick="navigateToBusinessTravel()">
+                <div class="grid-icon icon-approval">✈️</div>
+                <span class="grid-label">出差管理</span>
+            </div>
+            <div class="grid-item" onclick="navigateToApproval()">
+                <div class="grid-icon icon-process">📋</div>
+                <span class="grid-label">待办</span>
+            </div>
+            <div class="grid-item" onclick="openCompanyWebsite()">
+                <div class="grid-icon icon-website" style="background: linear-gradient(135deg, #FF5722 0%, #FF9800 100%);">🌐</div>
+                <span class="grid-label">企业网站</span>
+            </div>
+            <!-- 暂时注释掉其他功能模块 -->
+            <!-- <div class="grid-item" onclick="showComingSoon()">
+                <div class="grid-icon icon-reminder">📅</div>
+                <span class="grid-label">提醒</span>
+            </div>
+            <div class="grid-item" onclick="navigateToApproval()">
+                <div class="grid-icon icon-task">💖</div>
+                <span class="grid-label">迎检任务</span>
+            </div>
+            <div class="grid-item" onclick="navigateToApproval()">
+                <div class="grid-icon icon-mytask">⏰</div>
+                <span class="grid-label">我的任务</span>
+            </div>
+            <div class="grid-item" onclick="showComingSoon()">
+                <div class="grid-icon icon-more">⚙️</div>
+                <span class="grid-label">更多</span>
+            </div> -->
+        </div>
+
+        <!-- 消息通知区域 -->
+        <div class="message-section" onclick="navigateToNotifications()">
+            <div class="message-item">
+                <div class="message-icon">📢</div>
+                <div class="message-content">
+                    <span class="message-title" title="欢迎使用易掌通移动审批系统，点击查看更多通知">欢迎使用易掌通移动审批系统</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部卡片区域 -->
+        <div class="bottom-cards">
+            <div class="card card-blue" onclick="navigateToRegulations()">
+                <div class="card-icon">📋</div>
+                <span class="card-title">规章制度</span>
+            </div>
+            <div class="card card-orange" onclick="showComingSoon()">
+                <div class="card-icon">🏢</div>
+                <span class="card-title">企业风貌</span>
+            </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航 -->
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="navigateToHome()">
+                <div class="nav-icon">⌂</div>
+                <span class="nav-label">首页</span>
+            </div>
+            <div class="nav-item" onclick="navigateToApproval()">
+                <div class="nav-icon">✓</div>
+                <span class="nav-label">审批</span>
+            </div>
+            <div class="nav-item" onclick="navigateToProfile()">
+                <div class="nav-icon">◉</div>
+                <span class="nav-label">我的</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认对话框 -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="confirm-header">
+                <h3>温馨提示</h3>
+            </div>
+            <div class="confirm-body">
+                <p id="confirmMessage">确定要退出登录吗？</p>
+            </div>
+            <div class="confirm-footer">
+                <button class="btn btn-cancel" onclick="closeConfirmModal()">稍后再说</button>
+                <button class="btn btn-confirm" onclick="confirmAction()">是的</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 企业网站Modal -->
+    <div id="websiteModal" class="modal">
+        <div class="modal-content website-modal">
+            <div class="modal-header">
+                <h3>企业网站</h3>
+                <span class="close-btn" onclick="closeWebsiteModal()">&times;</span>
+            </div>
+            <div class="modal-body website-container">
+                <iframe id="companyWebsite" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+    <script>
+        // 企业网站功能
+        function openCompanyWebsite() {
+            document.getElementById('companyWebsite').src = 'http://www.hongmakj.com/';
+            document.getElementById('websiteModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        }
+        
+        function closeWebsiteModal() {
+            document.getElementById('websiteModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // 延迟清空iframe内容，避免页面闪烁
+            setTimeout(() => {
+                document.getElementById('companyWebsite').src = '';
+            }, 300);
+        }
+    </script>
+    
+    <style>
+        /* 企业网站模态框样式 */
+        .website-modal {
+            width: 95%;
+            max-width: 1200px;
+            height: 90%;
+            max-height: 800px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .website-modal .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            flex-shrink: 0;
+        }
+        
+        .website-modal .modal-header h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .website-modal .close-btn {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .website-modal .modal-body {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .website-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        #companyWebsite {
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: auto;
+        }
+        
+        /* 调整图标样式 */
+        .icon-website {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+    </style>
+</body>
+</html>
